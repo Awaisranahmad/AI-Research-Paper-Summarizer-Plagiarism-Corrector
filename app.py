@@ -1,114 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 AI Research Paper Assistant — Expert Edition</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-        
-        :root {
-            --primary: #00d4ff;
-        }
-        
-        * { font-family: 'Inter', sans-serif; }
-        .stApp { background: linear-gradient(180deg, #0f172a 0%, #1e2937 100%); color: #e2e8f0; }
-        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; }
-        
-        .header {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 212, 255, 0.15);
-            padding: 24px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 212 255 / 0.1); }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-        }
-        
-        .status-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #00ff88;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div style="max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="font-size: 2rem;">📄</span>
-                <h1 style="margin: 0; font-size: 1.75rem; background: linear-gradient(90deg, #00d4ff, #00ff88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    AI Research Paper Assistant
-                </h1>
-                <span style="font-size: 0.9rem; background: rgba(0,212,255,0.1); color: #00d4ff; padding: 2px 10px; border-radius: 9999px; font-weight: 600;">EXPERT v2.0</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 16px; font-size: 0.95rem;">
-                <div style="background: rgba(0,212,255,0.1); padding: 6px 14px; border-radius: 9999px; display: flex; align-items: center; gap: 6px;">
-                    <span class="status-dot"></span>
-                    <strong>Llama 3.3 70B</strong> • Groq • <span style="color:#00ff88">LIVE</span>
-                </div>
-                <a href="https://github.com/yourusername/ai-research-assistant-expert" target="_blank" style="color:#00d4ff; text-decoration:none; font-weight:500;">GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <div style="max-width: 1280px; margin: 2rem auto; padding: 0 2rem;">
-        <div class="card">
-            <h2 style="margin-top:0;">✨ What's New in Expert Edition</h2>
-            <div class="feature-grid" style="margin-top: 1rem;">
-                <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px;">
-                    <strong>📊 Advanced Tabs UI</strong><br>
-                    Clean, modern tabbed interface with 6 powerful sections
-                </div>
-                <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px;">
-                    <strong>💬 Full Q&amp;A Chat</strong><br>
-                    Ask unlimited questions about the paper (RAG-style)
-                </div>
-                <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px;">
-                    <strong>📋 Auto Metadata Extractor</strong><br>
-                    Title, authors, year, keywords, DOI in one click
-                </div>
-                <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px;">
-                    <strong>🔬 Deep Analysis Tools</strong><br>
-                    Key findings, limitations, gaps, methodology, critique
-                </div>
-                <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px;">
-                    <strong>📥 Export Everything</strong><br>
-                    PDF, Markdown, TXT, Word-ready formats
-                </div>
-                <div style="background:rgba(255,255,255,0.05); padding:16px; border-radius:12px;">
-                    <strong>🎛️ Pro Settings Sidebar</strong><br>
-                    Temperature, model choice, chunk size, max tokens
-                </div>
-            </div>
-        </div>
-
-        <!-- PASTE THE FULL STREAMLIT CODE BELOW THIS COMMENT -->
-        <!-- (I have written the complete ready-to-deploy code for you) -->
-
-```python
 import streamlit as st
 import os
 import re
-import json
 from datetime import datetime
 from PyPDF2 import PdfReader
 from langchain_groq import ChatGroq
@@ -122,22 +14,21 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for premium look
+# Custom CSS (Premium Look)
 st.markdown("""
 <style>
-    .main { background: linear-gradient(180deg, #0f172a 0%, #1e2937 100%); }
+    .main { background: linear-gradient(180deg, #0f172a 0%, #1e2937 100%); color: #e2e8f0; }
     .stButton>button { height: 52px; font-weight: 600; border-radius: 12px; }
     .stTabs [data-baseweb="tab-list"] { gap: 8px; }
     .stTabs [data-baseweb="tab"] { border-radius: 12px; padding: 10px 24px; }
-    .reportview-container .main .block-container { padding-top: 2rem; }
     .metric-card { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; }
 </style>
 """, unsafe_allow_html=True)
 
-# ====================== API KEY & LLM ======================
+# ====================== API KEY ======================
 api_key = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
 if not api_key:
-    st.error("🚨 GROQ_API_KEY missing! Add it in Streamlit Secrets or .env")
+    st.error("🚨 GROQ_API_KEY missing! Add it in Streamlit Secrets.")
     st.stop()
 
 # ====================== SIDEBAR — PRO SETTINGS ======================
@@ -166,7 +57,7 @@ with st.sidebar:
     
     st.caption(f"🔥 Using <b>{selected_model}</b> • {datetime.now().strftime('%H:%M')}", unsafe_allow_html=True)
 
-# Initialize LLM with live settings
+# Initialize LLM
 @st.cache_resource(show_spinner=False)
 def get_llm(_model_name, _temp, _max_tokens):
     return ChatGroq(
@@ -188,19 +79,18 @@ def clean_text(text):
 
 def extract_metadata(text_chunk):
     prompt = f"""Extract the following information from this research paper in clean Markdown format.
-    Only use the text provided. If something is missing, write "Not found".
+Only use the text provided. If something is missing, write "Not found".
 
-    - **Title**:
-    - **Authors**:
-    - **Year**:
-    - **Journal / Conference**:
-    - **DOI** (if any):
-    - **Keywords** (5-8):
-    - **Abstract** (first 2-3 sentences):
+- **Title**:
+- **Authors**:
+- **Year**:
+- **Journal / Conference**:
+- **DOI** (if any):
+- **Keywords** (5-8):
+- **Abstract** (first 2-3 sentences):
 
-    Paper text:
-    {text_chunk[:12000]}"""
-    
+Paper text:
+{text_chunk[:12000]}"""
     try:
         response = llm.invoke(prompt)
         return response.content
@@ -215,12 +105,10 @@ def generate_structured_analysis(context, task):
         "gaps": "Identify research gaps and potential future research directions.",
         "critique": "Give a professional academic critique: strengths, weaknesses, novelty, and impact."
     }
-    
     prompt = f"""{prompts[task]}
-    Be concise, professional, and evidence-based.
-    Context:
-    {context[:28000]}"""
-    
+Be concise, professional, and evidence-based.
+Context:
+{context[:28000]}"""
     try:
         res = llm.invoke(prompt)
         return res.content
@@ -229,13 +117,13 @@ def generate_structured_analysis(context, task):
 
 # ====================== MAIN UI ======================
 st.title("🚀 AI Research Paper Assistant")
-st.markdown("**Expert Edition** — Llama 3.3 + Advanced RAG-style Q&A + Pro UI")
+st.markdown("**Expert Edition v2.0** — Llama 3.3 + Advanced RAG + Pro UI")
 st.caption("Upload any research PDF • Get metadata, summaries, deep analysis & chat instantly")
 
 uploaded_file = st.file_uploader("📤 Upload Research Paper (PDF)", type="pdf", label_visibility="collapsed")
 
 if uploaded_file:
-    # Process only once using session state
+    # Process PDF only once
     if "processed_file" not in st.session_state or st.session_state.processed_file != uploaded_file.name:
         with st.spinner("🔥 Extracting & chunking full paper..."):
             reader = PdfReader(uploaded_file)
@@ -249,10 +137,8 @@ if uploaded_file:
             )
             chunks = splitter.split_text(cleaned_text)
             
-            # Smart context (max ~30k chars for safety)
             full_context = "\n\n───\n\n".join(chunks[:12]) if not use_full_context else cleaned_text[:32000]
             
-            # Save everything
             st.session_state.processed_file = uploaded_file.name
             st.session_state.cleaned_text = cleaned_text
             st.session_state.chunks = chunks
@@ -262,16 +148,16 @@ if uploaded_file:
             st.session_state.chat_history = []
             
             st.success(f"✅ Processed **{len(chunks)} chunks** • {len(reader.pages)} pages • {len(cleaned_text):,} characters")
-    
-    # ====================== TABS ======================
+
+    # Tabs
     tab_overview, tab_summary, tab_analysis, tab_chat, tab_rewrite, tab_export = st.tabs([
         "📊 Overview", "📝 Summaries", "🔬 Deep Analysis", "💬 Ask Anything", "✍️ Rewrite", "📤 Export"
     ])
-    
+
     context = st.session_state.full_context
     cleaned = st.session_state.cleaned_text
-    
-    # ====================== TAB 1: OVERVIEW ======================
+
+    # TAB 1: Overview
     with tab_overview:
         col1, col2 = st.columns([3, 2])
         with col1:
@@ -281,26 +167,23 @@ if uploaded_file:
             c2.metric("Chunks", len(st.session_state.chunks))
             c3.metric("Words", f"{len(cleaned.split()):,}")
             c4.metric("Characters", f"{len(cleaned):,}")
-            
             st.subheader("🔍 First Page Preview")
             st.text_area("", cleaned[:1500], height=220, disabled=True)
         
         with col2:
             st.subheader("📌 Extract Metadata")
             if st.button("🔥 Extract Title, Authors, DOI & Keywords", use_container_width=True, type="primary") or st.session_state.metadata is None:
-                with st.spinner("Analyzing first pages..."):
+                with st.spinner("Analyzing..."):
                     st.session_state.metadata = extract_metadata(cleaned)
-            
             if st.session_state.metadata:
                 st.markdown(st.session_state.metadata)
-    
-    # ====================== TAB 2: SUMMARIES ======================
+
+    # TAB 2: Summaries
     with tab_summary:
         summary_style = st.selectbox("Choose Summary Style", [
             "Concise (300 words)", "Detailed Academic", "Executive Summary", 
             "One-Page Abstract Style", "Layman Explanation (for non-experts)"
         ])
-        
         if st.button("🚀 Generate Summary", type="primary", use_container_width=True):
             with st.spinner("Llama 3.3 thinking..."):
                 prompt = f"Write a **{summary_style}** of the research paper. Use professional tone, highlight contribution and results.\n\nContext:\n{context}"
@@ -308,8 +191,8 @@ if uploaded_file:
                 st.markdown("### 📄 Generated Summary")
                 st.write(result.content)
                 st.download_button("⬇️ Download as .txt", result.content, f"summary_{uploaded_file.name}.txt")
-    
-    # ====================== TAB 3: DEEP ANALYSIS ======================
+
+    # TAB 3: Deep Analysis
     with tab_analysis:
         st.subheader("Choose Analysis Type")
         cols = st.columns(3)
@@ -320,7 +203,6 @@ if uploaded_file:
             ("🌍 Research Gaps", "gaps"),
             ("📈 Full Academic Critique", "critique")
         ]
-        
         for i, (label, key) in enumerate(analysis_types):
             with cols[i % 3]:
                 if st.button(label, use_container_width=True):
@@ -328,12 +210,10 @@ if uploaded_file:
                         result = generate_structured_analysis(context, key)
                         st.markdown(f"### {label}")
                         st.write(result)
-    
-    # ====================== TAB 4: Q&A CHAT ======================
+
+    # TAB 4: Q&A Chat
     with tab_chat:
         st.markdown("**💬 Ask anything about this paper** (RAG-powered)")
-        
-        # Chat display
         for msg in st.session_state.chat_history:
             with st.chat_message(msg["role"]):
                 st.markdown(msg["content"])
@@ -345,21 +225,19 @@ if uploaded_file:
             
             with st.spinner("Thinking..."):
                 qa_prompt = f"""You are an expert researcher. Answer ONLY using the provided paper context.
-                If the answer is not in the paper, say "Not mentioned in this paper."
-                
-                Paper Context:
-                {context[:30000]}
-                
-                Question: {prompt}"""
-                
+If the answer is not in the paper, say "Not mentioned in this paper."
+
+Paper Context:
+{context[:30000]}
+
+Question: {prompt}"""
                 response = llm.invoke(qa_prompt)
                 answer = response.content
-                
                 st.session_state.chat_history.append({"role": "assistant", "content": answer})
                 with st.chat_message("assistant"):
                     st.markdown(answer)
-    
-    # ====================== TAB 5: REWRITE ======================
+
+    # TAB 5: Rewrite
     with tab_rewrite:
         rewrite_mode = st.selectbox("Rewrite Style", [
             "Plagiarism-free Academic Version",
@@ -368,51 +246,40 @@ if uploaded_file:
             "Conference Presentation Version",
             "Twitter Thread Style (10 tweets)"
         ])
-        
         length = st.radio("Length", ["Keep similar length", "Make it shorter", "Make it longer"], horizontal=True)
         
         if st.button("✨ Rewrite Full Paper Section", type="primary", use_container_width=True):
             with st.spinner("Rewriting..."):
                 prompt = f"""Rewrite the following research text in **{rewrite_mode}**.
-                Make it 100% original, improve clarity and flow.
-                Length instruction: {length}
-                
-                Original text:
-                {context[:25000]}"""
+Make it 100% original, improve clarity and flow.
+Length instruction: {length}
+
+Original text:
+{context[:25000]}"""
                 result = llm.invoke(prompt)
                 st.write(result.content)
                 st.download_button("Download Rewritten Version", result.content, "rewritten_paper.md")
-    
-    # ====================== TAB 6: EXPORT ======================
+
+    # TAB 6: Export
     with tab_export:
         st.subheader("Download Everything")
         col1, col2 = st.columns(2)
-        
         with col1:
-            st.download_button(
-                "📄 Full Cleaned Text", 
-                st.session_state.cleaned_text, 
-                f"cleaned_{uploaded_file.name}.txt"
-            )
-            st.download_button(
-                "📋 All Metadata", 
-                st.session_state.metadata or "No metadata yet", 
-                "metadata.md"
-            )
-        
+            st.download_button("📄 Full Cleaned Text", st.session_state.cleaned_text, f"cleaned_{uploaded_file.name}.txt")
+            st.download_button("📋 All Metadata", st.session_state.metadata or "No metadata yet", "metadata.md")
         with col2:
             if st.button("📦 Generate Complete Research Report"):
-                with st.spinner("Creating full report (this takes ~15 seconds)..."):
+                with st.spinner("Creating full report..."):
                     report_prompt = f"""Create a complete professional research report with these sections:
-                    1. Title & Authors
-                    2. Executive Summary
-                    3. Key Findings
-                    4. Methodology
-                    5. Limitations & Gaps
-                    6. Academic Critique
-                    
-                    Use the paper below:
-                    {context[:32000]}"""
+1. Title & Authors
+2. Executive Summary
+3. Key Findings
+4. Methodology
+5. Limitations & Gaps
+6. Academic Critique
+
+Use the paper below:
+{context[:32000]}"""
                     report = llm.invoke(report_prompt).content
                     st.success("✅ Full report generated!")
                     st.download_button("⬇️ Download Complete Report", report, "FULL_RESEARCH_REPORT.md", type="primary")
@@ -420,13 +287,14 @@ if uploaded_file:
 else:
     st.info("👆 Upload a PDF to unlock all expert features", icon="📄")
     st.markdown("""
-    ### 🔥 What this Expert Edition can do:
-    - Auto-extract title, authors, DOI, keywords
-    - Multiple summary styles + deep analysis
-    - Unlimited Q&A chat (no context limit issues)
-    - Professional rewriting in 5 styles
-    - One-click full research report
-    - Beautiful tabbed UI with live Groq speed
+    ### 🔥 Expert Features Included:
+    - 6 Modern Tabs
+    - Auto Metadata Extractor
+    - Unlimited Q&A Chat
+    - Deep Analysis (Key Findings, Gaps, Critique etc.)
+    - 5 Rewrite Styles
+    - Full Research Report Generator
+    - Pro Sidebar Settings
     """)
 
-st.caption("Made with ❤️ for researchers • Powered by Groq + Llama 3.3 70B • Fully working on Streamlit Cloud")
+st.caption("Made with ❤️ for researchers • Powered by Groq + Llama 3.3 70B")
